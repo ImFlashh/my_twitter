@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
+
+from twitter.views import ShowAllPostsView, AddPostView, SignUpView, DeletePost
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', ShowAllPostsView.as_view(), name='main'),
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^signup/$', SignUpView.as_view(), name='signup'),
+    url(r'^add_post', AddPostView.as_view(), name='add_post'),
+    url(r'^delete_post/(?P<post_id>[\d]+)$', DeletePost.as_view(), name='delete_post'),
 ]

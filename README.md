@@ -1,1 +1,1 @@
-# r2d2
+Simple application like twitter. You can add, edit and remove posts. 
